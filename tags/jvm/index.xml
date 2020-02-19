@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cark&#39;s blog</title>
-    <link>https://linzhaoming.com/</link>
-    <description>Recent content on Cark&#39;s blog</description>
+    <title>JVM on Cark&#39;s blog</title>
+    <link>https://linzhaoming.com/tags/jvm/</link>
+    <description>Recent content in JVM on Cark&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 05 Jul 2019 14:26:00 +0800</lastBuildDate>
     
-	<atom:link href="https://linzhaoming.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://linzhaoming.com/tags/jvm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,15 +18,6 @@
       
       <guid>https://linzhaoming.com/posts/java-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/</guid>
       <description>Java 虚拟机在执行 Java 程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则依赖用户线程的启动和结束而建立和销毁。 1</description>
-    </item>
-    
-    <item>
-      <title>关于</title>
-      <link>https://linzhaoming.com/about/</link>
-      <pubDate>Thu, 20 Jun 2019 00:00:00 +0800</pubDate>
-      
-      <guid>https://linzhaoming.com/about/</guid>
-      <description>种一棵树最好的时间是十年前，其次是现在。</description>
     </item>
     
   </channel>

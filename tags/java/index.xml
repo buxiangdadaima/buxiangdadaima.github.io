@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on Cark&#39;s blog</title>
+    <link>https://linzhaoming.com/tags/java/</link>
+    <description>Recent content in Java on Cark&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 16 Jul 2019 00:00:01 +0800</lastBuildDate>
+    
+	<atom:link href="https://linzhaoming.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>JVM - 垃圾收集器</title>
+      <link>https://linzhaoming.com/posts/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:01 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/posts/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;垃圾收集器是内存回收的具体实现&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM - 垃圾回收算法</title>
+      <link>https://linzhaoming.com/posts/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Tue, 16 Jul 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/posts/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;根据对象存储的区域不同，垃圾回收的算法也会有所区别。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM - 判断对象是否存活</title>
+      <link>https://linzhaoming.com/posts/%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%AD%98%E6%B4%BB/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:01 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/posts/%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%AD%98%E6%B4%BB/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;垃圾收集器在对堆进行回收前，第一件事情就是要确定这些对象之中哪些还“存活”着，哪些已经“死去”（即不可能再被任何途径使用对象）。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>JVM - Java 内存区域（运行时数据区域）</title>
+      <link>https://linzhaoming.com/posts/java-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/</link>
+      <pubDate>Mon, 15 Jul 2019 00:00:00 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/posts/java-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Java 虚拟机在执行 Java 程序的过程中会把它所管理的内存划分为若干个不同的数据区域。这些区域都有各自的用途，以及销毁的时间，有的区域随着虚拟机进程的启动而存在，有些区域则依赖用户线程的启动和结束而建立和销毁。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -10,7 +10,8 @@
         content="Cark"/>
 
   
-  <meta name="description" content="Hugo theme zozo example site."/>
+  <meta name="description" content=" 探索 Eureka 服务注册中心的相关原理
+"/>
   
 
   
@@ -19,13 +20,11 @@
   
 
   
-  <link rel="canonical" href="https://linzhaoming.com/posts/"/>
+  <link rel="canonical" href="https://linzhaoming.com/posts/%E6%8E%A2%E7%B4%A2-euraka/"/>
 
   
-  <link rel="alternate" type="application/rss&#43;xml" href="https://linzhaoming.com/posts/index.xml">
-  
 
-  <title>Posts &middot; Cark&#39;s blog</title>
+  <title>探索 Eureka &middot; Cark&#39;s blog</title>
 
   <link rel="shortcut icon" href="https://linzhaoming.com/images/favicon.ico"/>
   <link rel="stylesheet" href="https://linzhaoming.com/css/animate.min.css"/>
@@ -99,57 +98,83 @@
 </div>
 
   <div class="content">
-    <div class="list_with_title">
-      
-      <div class="listing_title">2019</div>
-      <div class="listing">
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/%E6%8E%A2%E7%B4%A2-euraka/">探索 Eureka</a>
-            <div class="post_time"><span class="date">07-21</span></div>
-          </div>
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/%E6%8E%A2%E7%B4%A2-euraka/'>探索 Eureka</a></h2>
+          <span class="date">2019.07.21</span>
         </div>
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/vim-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vim 学习笔记</a>
-            <div class="post_time"><span class="date">07-18</span></div>
+        <div class="post_content markdown"><blockquote>
+<p>探索 Eureka 服务注册中心的相关原理</p>
+</blockquote>
+
+<h1 id="何为-eureka">何为 Eureka</h1>
+
+<p>Eureka 是古希腊语，意为<strong>我找到了，我发现了</strong>，相传是阿基米德在发现浮力原理的时候说出的一个词。</p>
+
+<p>因此从名字上看便可知，Eureka 在微服务中充当着<strong>服务注册中心</strong>的角色，而微服务中最核心，最基础的组件就是注册中心，其重要性也就不言而喻了。</p>
+
+<h1 id="eureka-架构">Eureka 架构</h1>
+
+<p>Eureka 包括两个端：</p>
+
+<ul>
+<li>Eureka Server：注册中心服务端，用于维护和管理注册服务列表。</li>
+<li>Eureka Client：注册中心客户端，向注册中心注册服务的应用都可以叫做Eureka Client（包括Eureka Server本身）。</li>
+</ul>
+
+<h1 id="eureka-中的组件调用关系">Eureka 中的组件调用关系</h1>
+
+<h2 id="注册中心">注册中心</h2>
+
+<ul>
+<li>初次启动后，作为服务提供者注册服务使用以及服务消费者拉取服务使用</li>
+<li>存在其他集群启动，会从其它节点拉取注册信息</li>
+<li>运行过程中，会定时运行 evit 任务，剔除没有按时 renew 的服务(包括非正常停止和网络故障的服务)。</li>
+<li>运行过程中，接收到的 register、renew、cancel 请求，都会同步到其它注册中心节点。</li>
+</ul>
+
+<h2 id="服务提供者">服务提供者</h2>
+
+<ul>
+<li>启动后，向注册中心发起 register 请求，注册服务</li>
+<li>在运行过程中，定时向注册中心发送 renew 心跳</li>
+<li>停止服务提供者，向注册中心发起 cancel 请求，清空当前服务注册信息。</li>
+</ul>
+
+<h2 id="服务消费者">服务消费者</h2>
+
+<ul>
+<li>启动后，从注册中心拉取服务注册信息</li>
+<li>在运行过程中，定时更新服务注册信息。</li>
+<li>服务消费者发起远程调用时，从先从同区域的服务提供者获取服务，获取不到或者同区域服务提供者挂了，才会选择其它区域服务提供者。从其它区域获取服务时，会根据负载均衡算法获取。</li>
+</ul>
+
+<h1 id="参考资料">参考资料</h1>
+
+<blockquote>
+<p><a href="http://www.majunwei.com/view/201812300909057027.html">小马过河 - Eureka内部实现原理 </a></p>
+</blockquote></div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="https://linzhaoming.com/tags/spring-cloud/">Spring Cloud</a>
+                
+                <a href="https://linzhaoming.com/tags/eureka/">Eureka</a>
+                
+              </span>
+            </div>
           </div>
+          
         </div>
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/">JVM - 垃圾收集器</a>
-            <div class="post_time"><span class="date">07-16</span></div>
-          </div>
-        </div>
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/">JVM - 垃圾回收算法</a>
-            <div class="post_time"><span class="date">07-16</span></div>
-          </div>
-        </div>
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%AD%98%E6%B4%BB/">JVM - 判断对象是否存活</a>
-            <div class="post_time"><span class="date">07-15</span></div>
-          </div>
-        </div>
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/java-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/">JVM - Java 内存区域（运行时数据区域）</a>
-            <div class="post_time"><span class="date">07-15</span></div>
-          </div>
-        </div>
-        
       </div>
       
+      
     </div>
-    <div class="pagination"></div>
   </div>
   <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
 </div>

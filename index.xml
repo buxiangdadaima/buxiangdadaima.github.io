@@ -6,10 +6,21 @@
     <description>Recent content on Cark&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Jul 2019 00:00:01 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jul 2019 19:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://linzhaoming.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vim 学习笔记</title>
+      <link>https://linzhaoming.com/posts/vim-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 18 Jul 2019 19:00:00 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/posts/vim-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;作为一只程序猿，怎么能不懂一点 Vim。 学习 Vim，可在终端下输入 vimtutor 即可看到彩蛋。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
     
     <item>
       <title>JVM - 垃圾收集器</title>

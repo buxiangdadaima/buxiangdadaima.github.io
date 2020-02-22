@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Cark&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 16 Jul 2019 00:00:01 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jul 2019 19:00:00 +0800</lastBuildDate>
     
 	<atom:link href="https://linzhaoming.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux</title>
+      <link>https://linzhaoming.com/tags/linux/</link>
+      <pubDate>Thu, 18 Jul 2019 19:00:00 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://linzhaoming.com/tags/vim/</link>
+      <pubDate>Thu, 18 Jul 2019 19:00:00 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/tags/vim/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>JVM</title>

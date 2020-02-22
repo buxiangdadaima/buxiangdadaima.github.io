@@ -10,7 +10,8 @@
         content="Cark"/>
 
   
-  <meta name="description" content="Hugo theme zozo example site."/>
+  <meta name="description" content=" 作为一只程序猿，怎么能不懂一点 Vim。 学习 Vim，可在终端下输入 vimtutor 即可看到彩蛋。
+"/>
   
 
   
@@ -19,13 +20,11 @@
   
 
   
-  <link rel="canonical" href="https://linzhaoming.com/posts/"/>
+  <link rel="canonical" href="https://linzhaoming.com/posts/vim-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
 
   
-  <link rel="alternate" type="application/rss&#43;xml" href="https://linzhaoming.com/posts/index.xml">
-  
 
-  <title>Posts &middot; Cark&#39;s blog</title>
+  <title>Vim 学习笔记 &middot; Cark&#39;s blog</title>
 
   <link rel="shortcut icon" href="https://linzhaoming.com/images/favicon.ico"/>
   <link rel="stylesheet" href="https://linzhaoming.com/css/animate.min.css"/>
@@ -99,50 +98,145 @@
 </div>
 
   <div class="content">
-    <div class="list_with_title">
-      
-      <div class="listing_title">2019</div>
-      <div class="listing">
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/vim-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Vim 学习笔记</a>
-            <div class="post_time"><span class="date">07-18</span></div>
-          </div>
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/vim-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>Vim 学习笔记</a></h2>
+          <span class="date">2019.07.18</span>
         </div>
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/">JVM - 垃圾收集器</a>
-            <div class="post_time"><span class="date">07-16</span></div>
+        <div class="post_content markdown"><blockquote>
+<p>作为一只程序猿，怎么能不懂一点 Vim。 学习 Vim，可在终端下输入 vimtutor 即可看到彩蛋。</p>
+</blockquote>
+
+<h1 id="移动光标">移动光标</h1>
+
+<ul>
+<li>h 左移</li>
+<li>j 下移</li>
+<li>k 上移</li>
+<li>l 右移
+&gt; hjkl - 左下上右</li>
+</ul>
+
+<h1 id="编辑操作">编辑操作</h1>
+
+<ul>
+<li>i 插入（insert）</li>
+<li>a 行后添加（append）</li>
+</ul>
+
+<h1 id="删除操作">删除操作</h1>
+
+<h2 id="光标">光标</h2>
+
+<ul>
+<li>dw 删除光标处一个单词 d-delete w-word</li>
+<li>d$ 删除光标处到行末 $-通配符行末
+&gt; d number motion 可在 d 后添加数字，表明重复次数，</li>
+</ul>
+
+<h2 id="行">行</h2>
+
+<ul>
+<li>dd 删除整行</li>
+<li>2dd 删除两行</li>
+</ul>
+
+<h1 id="撤销操作">撤销操作</h1>
+
+<ul>
+<li>u 撤销上一次命令</li>
+<li>U 撤销一行上的所有操作</li>
+</ul>
+
+<h1 id="替换字符操作">替换字符操作</h1>
+
+<ul>
+<li>r + 替换字符 替换对应光标处字符，r-replace</li>
+</ul>
+
+<h1 id="粘贴操作">粘贴操作</h1>
+
+<ul>
+<li>p 粘贴上一次删除内容 p-paste</li>
+</ul>
+
+<h1 id="显示光标当前文件所在位置以及文件状态">显示光标当前文件所在位置以及文件状态</h1>
+
+<ul>
+<li>CTRL + G</li>
+</ul>
+
+<h1 id="移动操作">移动操作</h1>
+
+<ul>
+<li>G 移动到文件底部</li>
+<li>gg 移动到文件头部</li>
+</ul>
+
+<h1 id="搜索操作">搜索操作</h1>
+
+<ul>
+<li>/ + 内容
+&gt; n-下一个 N-上一个</li>
+</ul>
+
+<h1 id="替换内容操作">替换内容操作</h1>
+
+<ul>
+<li>:s/old/new/g
+&gt; old 原先内容 new 新内容 g-global 全局替换（不加则替换第一个） c-confirmation（确认提示）</li>
+</ul>
+
+<h1 id="复制操作">复制操作</h1>
+
+<ul>
+<li>y</li>
+</ul>
+
+<h1 id="设置行号显示">设置行号显示</h1>
+
+<p>需在命令模式下输入</p>
+
+<ul>
+<li>set number</li>
+</ul>
+
+<h1 id="退出操作">退出操作</h1>
+
+<p>需在命令模式下输入</p>
+
+<ul>
+<li>q 退出 q-quit</li>
+<li>w 保存</li>
+<li>! 不保存</li>
+</ul>
+
+<h1 id="参考资料">参考资料</h1>
+
+<blockquote>
+<p>vimtutor</p>
+</blockquote></div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="https://linzhaoming.com/tags/linux/">Linux</a>
+                
+                <a href="https://linzhaoming.com/tags/vim/">Vim</a>
+                
+              </span>
+            </div>
           </div>
+          
         </div>
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95/">JVM - 垃圾回收算法</a>
-            <div class="post_time"><span class="date">07-16</span></div>
-          </div>
-        </div>
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E5%AD%98%E6%B4%BB/">JVM - 判断对象是否存活</a>
-            <div class="post_time"><span class="date">07-15</span></div>
-          </div>
-        </div>
-        
-        <div class="listing_item">
-          <div class="listing_post">
-            <a href="/posts/java-%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F/">JVM - Java 内存区域（运行时数据区域）</a>
-            <div class="post_time"><span class="date">07-15</span></div>
-          </div>
-        </div>
-        
       </div>
       
+      
     </div>
-    <div class="pagination"></div>
   </div>
   <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
 </div>

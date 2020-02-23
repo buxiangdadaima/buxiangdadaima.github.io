@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="Cark"/>
+
+  
+  <meta name="description" content=" 学习 Java 并发前，需先理解 Java 内存模型。
+"/>
+  
+
+  
+  
+  <meta name="keywords" content="Hugo, theme, zozo"/>
+  
+
+  
+  <link rel="canonical" href="https://linzhaoming.com/posts/java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
+
+  
+
+  <title>Java 内存模型 &middot; Cark&#39;s blog</title>
+
+  <link rel="shortcut icon" href="https://linzhaoming.com/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/zozo.css"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/about/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://linzhaoming.com">
+          <span>Cark&#39;s blog</span>
+          <img src="https://linzhaoming.com/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        
+        
+        <a href="%20" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        
+        
+        
+        
+        
+        <a href="https://linzhaoming.com/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/'>Java 内存模型</a></h2>
+          <span class="date">2019.08.01</span>
+        </div>
+        <div class="post_content markdown"><blockquote>
+<p>学习 Java 并发前，需先理解 Java 内存模型。</p>
+</blockquote>
+
+<h1 id="jmm-简介">JMM 简介</h1>
+
+<p>Java 内存模型（JMM）本身是一种抽象的概念，并不真实存在，描述的是一组规则或规范。</p>
+
+<p>JMM 规定了 Java 中内存划分为主内存和工作内存，主内存是线程共享的数据，对应堆（其为线程共享的），而工作内存对应栈（其为线程私有的，也可理解为一种缓存类似的东西）。</p>
+
+<ul>
+<li><p>主内存</p>
+
+<p>主要存储的是Java实例对象，所有线程创建的实例对象都存放在主内存中，不管该实例对象是成员变量还是方法中的本地变量(也称局部变量)，当然也包括了共享的类信息、常量、静态变量。由于是共享数据区域，多条线程对同一个变量进行访问可能会发现线程安全问题。</p></li>
+
+<li><p>工作内存</p>
+
+<p>主要存储当前方法的所有本地变量信息(工作内存中存储着主内存中的变量副本拷贝)，每个线程只能访问自己的工作内存，即线程中的本地变量对其它线程是不可见的，就算是两个线程执行的是同一段代码，它们也会各自在自己的工作内存中创建属于当前线程的本地变量，当然也包括了字节码行号指示器、相关Native方法的信息。注意由于工作内存是每个线程的私有数据，线程间无法相互访问工作内存，因此存储在工作内存的数据不存在线程安全问题。</p></li>
+</ul>
+
+<h1 id="划分依据">划分依据</h1>
+
+<p>Java 线程每次读取或写入变量若都直接去操作主内存，对性能会有所影响。因此每条线程都有自己的工作内存，工作内存保存了主内存中的一份拷贝，线程直接在自己工作内存（相当于缓存）中操作，远比直接操作主内存快。</p>
+
+<p><span style="color: orange">但是，因为线程修改共享变量的时候，对其它线程是不可见的，由此会导致一系列的线程不安全问题。</span></p>
+
+<h1 id="内存交互">内存交互</h1>
+
+<p>JMM 规定了主内存和工作内存间具体的交互协议，即一个变量如何从主内存拷贝到工作内存、如何从工作内存同步到主内存之间的实现细节</p>
+
+<ol>
+<li><p>lock（锁定）：作用于主内存的变量，把一个变量标识为一条线程独占状态。</p></li>
+
+<li><p>unlock（解锁）：作用于主内存变量，把一个处于锁定状态的变量释放出来，释放后的变量才可以被其他线程锁定。</p></li>
+
+<li><p>read（读取）：作用于主内存变量，把一个变量值从主内存传输到线程的工作内存中，以便随后的load动作使用</p></li>
+
+<li><p>load（载入）：作用于工作内存的变量，它把read操作从主内存中得到的变量值放入工作内存的变量副本中。</p></li>
+
+<li><p>use（使用）：作用于工作内存的变量，把工作内存中的一个变量值传递给执行引擎，每当虚拟机遇到一个需要使用变量的值的字节码指令时将会执行这个操作。</p></li>
+
+<li><p>assign（赋值）：作用于工作内存的变量，它把一个从执行引擎接收到的值赋值给工作内存的变量，每当虚拟机遇到一个给变量赋值的字节码指令时执行这个操作。</p></li>
+
+<li><p>store（存储）：作用于工作内存的变量，把工作内存中的一个变量的值传送到主内存中，以便随后的write的操作。</p></li>
+
+<li><p>write（写入）：作用于主内存的变量，它把store操作从工作内存中一个变量的值传送到主内存的变量中。</p></li>
+</ol>
+
+<p>JMM 对这 8 个操作制定了如下规则：</p>
+
+<ol>
+<li><p>不允许 read 和 load，store 和 write 操作之一单独出现。</p></li>
+
+<li><p>不允许一个线程丢弃它最近的 assign 操作。即变量在工作内存中改变了账号必须把变化同步回主内存</p></li>
+
+<li><p>一个新的变量只允许在主内存中诞生，不允许工作内存直接使用未初始化的变量。</p></li>
+
+<li><p>一个变量同一时刻只允许一条线程进行lock操作，但同一线程可以lock多次，lock多次之后必须执行同样次数的unlock操作</p></li>
+
+<li><p>如果对一个变量进行lock操作，那么将会清空工作内存中此变量的值。</p></li>
+
+<li><p>不允许对未lock的变量进行unlock操作，也不允许unlock一个被其它线程lock的变量</p></li>
+
+<li><p>如果一个变量执行unlock操作，必须先把此变量同步回主内存中。</p></li>
+</ol>
+
+<h1 id="happen-before">happen-before</h1>
+
+<p>在 JMM 中，当 A 操作先行发生于 B 操作，则在发生 B 操作的时候，操作 A 产生的影响能被 B 观察到，需要两者之间存在 happen-before 关系</p>
+
+<h1 id="参考资料">参考资料</h1>
+
+<ul>
+<li><p>《Java 并发编程的艺术》</p></li>
+
+<li><p><a href="https://blog.csdn.net/javazejian/article/details/72772461">全面理解Java内存模型(JMM)及volatile关键字</a></p></li>
+</ul></div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="https://linzhaoming.com/tags/java/">Java</a>
+                
+                <a href="https://linzhaoming.com/tags/jmm/">JMM</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  
+</footer>
+
+
+
+<script src="https://linzhaoming.com/js/jquery-3.3.1.min.js"></script>
+<script src="https://linzhaoming.com/js/zozo.js"></script>
+<script src="https://linzhaoming.com/js/highlight.pack.js"></script>
+<link  href="https://linzhaoming.com/css/fancybox.min.css" rel="stylesheet">
+<script src="https://linzhaoming.com/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

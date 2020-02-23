@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>JMM on Cark&#39;s blog</title>
+    <link>https://linzhaoming.com/tags/jmm/</link>
+    <description>Recent content in JMM on Cark&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 01 Aug 2019 16:36:08 +0800</lastBuildDate>
+    
+	<atom:link href="https://linzhaoming.com/tags/jmm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java 内存模型</title>
+      <link>https://linzhaoming.com/posts/java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Thu, 01 Aug 2019 16:36:08 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/posts/java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;学习 Java 并发前，需先理解 Java 内存模型。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

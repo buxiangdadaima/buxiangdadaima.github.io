@@ -4,7 +4,36 @@
   
   <url>
     <loc>https://linzhaoming.com/</loc>
-    <lastmod>2019-07-23T19:34:53+08:00</lastmod>
+    <lastmod>2019-08-01T16:36:08+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/tags/jmm/</loc>
+    <lastmod>2019-08-01T16:36:08+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/tags/java/</loc>
+    <lastmod>2019-08-01T16:36:08+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/posts/java-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2019-08-01T16:36:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/posts/</loc>
+    <lastmod>2019-08-01T16:36:08+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/tags/</loc>
+    <lastmod>2019-08-01T16:36:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -20,19 +49,7 @@
   </url>
   
   <url>
-    <loc>https://linzhaoming.com/posts/</loc>
-    <lastmod>2019-07-23T19:34:53+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://linzhaoming.com/tags/rocketmq/</loc>
-    <lastmod>2019-07-23T19:34:53+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://linzhaoming.com/tags/</loc>
     <lastmod>2019-07-23T19:34:53+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -85,12 +102,6 @@
   <url>
     <loc>https://linzhaoming.com/posts/%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/</loc>
     <lastmod>2019-07-16T00:00:01+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://linzhaoming.com/tags/java/</loc>
-    <lastmod>2019-07-16T00:00:01+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

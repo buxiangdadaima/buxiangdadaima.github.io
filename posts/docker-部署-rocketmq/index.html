@@ -110,7 +110,7 @@
 
 <h1 id="拉取项目">拉取项目</h1>
 
-<pre><code>[root@izuf6ifqt8vh2gzameq5i5z ~]# git clone https://github.com/apache/rocketmq-docker.git
+<pre><code class="language-sh">[root@izuf6ifqt8vh2gzameq5i5z ~]# git clone https://github.com/apache/rocketmq-docker.git
 Cloning into 'rocketmq-docker'...
 remote: Enumerating objects: 30, done.
 remote: Counting objects: 100% (30/30), done.
@@ -123,14 +123,14 @@ Checking connectivity... done.
 
 <h1 id="执行脚本">执行脚本</h1>
 
-<pre><code>cd rocketmq-docker/templates
+<pre><code class="language-sh">cd rocketmq-docker/templates
 
 sh play-docker.sh
 </code></pre>
 
 <h1 id="查看镜像">查看镜像</h1>
 
-<pre><code>[root@izuf6ifqt8vh2gzameq5i5z rocketmq-docker]# docker ps -a
+<pre><code class="language-sh">[root@izuf6ifqt8vh2gzameq5i5z rocketmq-docker]# docker ps -a
 CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                        PORTS               NAMES
 8fad03ff4b44        apacherocketmq/rocketmq:4.5.0-alpine   &quot;sh mqbroker&quot;            33 minutes ago      Exited (137) 21 minutes ago                       rmqbroker
 cd9a5ef17831        apacherocketmq/rocketmq:4.5.0-alpine   &quot;sh mqnamesrv&quot;           33 minutes ago      Exited (137) 20 minutes ago                       rmqnamesrv
@@ -149,7 +149,7 @@ fedb1a79c544        hello-world                            &quot;/hello&quot;   
 
 <h1 id="运行">运行</h1>
 
-<pre><code>docker start rmqnamesrv rmqbroker
+<pre><code class="language-sh">docker start rmqnamesrv rmqbroker
 </code></pre>
 
 <blockquote>

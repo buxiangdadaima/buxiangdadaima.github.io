@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Cark&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 22 Jul 2019 20:47:49 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jul 2019 19:34:53 +0800</lastBuildDate>
     
 	<atom:link href="https://linzhaoming.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker</title>
+      <link>https://linzhaoming.com/tags/docker/</link>
+      <pubDate>Tue, 23 Jul 2019 19:34:53 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RocketMQ</title>
+      <link>https://linzhaoming.com/tags/rocketmq/</link>
+      <pubDate>Tue, 23 Jul 2019 19:34:53 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/tags/rocketmq/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Linux</title>

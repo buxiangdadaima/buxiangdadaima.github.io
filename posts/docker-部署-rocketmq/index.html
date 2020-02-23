@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="Cark"/>
+
+  
+  <meta name="description" content=" 记录使用 Docker 部署 RocketMQ
+"/>
+  
+
+  
+  
+  <meta name="keywords" content="Hugo, theme, zozo"/>
+  
+
+  
+  <link rel="canonical" href="https://linzhaoming.com/posts/docker-%E9%83%A8%E7%BD%B2-rocketmq/"/>
+
+  
+
+  <title>Docker 部署 RocketMQ &middot; Cark&#39;s blog</title>
+
+  <link rel="shortcut icon" href="https://linzhaoming.com/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/zozo.css"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/about/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://linzhaoming.com">
+          <span>Cark&#39;s blog</span>
+          <img src="https://linzhaoming.com/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        
+        
+        <a href="%20" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        
+        
+        
+        
+        
+        <a href="https://linzhaoming.com/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/docker-%E9%83%A8%E7%BD%B2-rocketmq/'>Docker 部署 RocketMQ</a></h2>
+          <span class="date">2019.07.23</span>
+        </div>
+        <div class="post_content markdown"><blockquote>
+<p>记录使用 Docker 部署 RocketMQ</p>
+</blockquote>
+
+<h1 id="拉取项目">拉取项目</h1>
+
+<pre><code>[root@izuf6ifqt8vh2gzameq5i5z ~]# git clone https://github.com/apache/rocketmq-docker.git
+Cloning into 'rocketmq-docker'...
+remote: Enumerating objects: 30, done.
+remote: Counting objects: 100% (30/30), done.
+remote: Compressing objects: 100% (26/26), done.
+remote: Total 343 (delta 13), reused 10 (delta 4), pack-reused 313
+Receiving objects: 100% (343/343), 88.62 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (166/166), done.
+Checking connectivity... done.
+</code></pre>
+
+<h1 id="执行脚本">执行脚本</h1>
+
+<pre><code>cd rocketmq-docker/templates
+
+sh play-docker.sh
+</code></pre>
+
+<h1 id="查看镜像">查看镜像</h1>
+
+<pre><code>[root@izuf6ifqt8vh2gzameq5i5z rocketmq-docker]# docker ps -a
+CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                        PORTS               NAMES
+8fad03ff4b44        apacherocketmq/rocketmq:4.5.0-alpine   &quot;sh mqbroker&quot;            33 minutes ago      Exited (137) 21 minutes ago                       rmqbroker
+cd9a5ef17831        apacherocketmq/rocketmq:4.5.0-alpine   &quot;sh mqnamesrv&quot;           33 minutes ago      Exited (137) 20 minutes ago                       rmqnamesrv
+f342558559d6        0d4232e2cdfa                           &quot;/bin/sh -c 'set -eu…&quot;   37 minutes ago      Exited (2) 37 minutes ago                         nostalgic_newton
+85ef924aafce        hello-world                            &quot;/hello&quot;                 6 weeks ago         Exited (0) 6 weeks ago                            cool_montalcini
+185215abcaee        hello-world                            &quot;/hello&quot;                 8 weeks ago         Exited (0) 8 weeks ago                            nostalgic_shaw
+c63881d3f556        centos                                 &quot;/bin/bash&quot;              8 weeks ago         Exited (0) 8 weeks ago                            youthful_jepsen
+6e3676c77adc        hello-world                            &quot;/hello&quot;                 8 weeks ago         Exited (0) 8 weeks ago                            quizzical_driscoll
+fedb1a79c544        hello-world                            &quot;/hello&quot;                 8 weeks ago         Exited (0) 8 weeks ago                            nostalgic_haibt
+70cbf8a811ea        hello-world                            &quot;/hello&quot;                 8 weeks ago         Exited (0) 8 weeks ago                            funny_goldstine
+</code></pre>
+
+<blockquote>
+<p><span style="color: orange">注：</span>  docker ps 可查看正在运行中的镜像</p>
+</blockquote>
+
+<h1 id="运行">运行</h1>
+
+<pre><code>docker start rmqnamesrv rmqbroker
+</code></pre>
+
+<p><span style="color: orange">注意：</span> 启动时 NameServer 必须在 Broker 之前</p></div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="https://linzhaoming.com/tags/docker/">Docker</a>
+                
+                <a href="https://linzhaoming.com/tags/rocketmq/">RocketMQ</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  
+</footer>
+
+
+
+<script src="https://linzhaoming.com/js/jquery-3.3.1.min.js"></script>
+<script src="https://linzhaoming.com/js/zozo.js"></script>
+<script src="https://linzhaoming.com/js/highlight.pack.js"></script>
+<link  href="https://linzhaoming.com/css/fancybox.min.css" rel="stylesheet">
+<script src="https://linzhaoming.com/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>

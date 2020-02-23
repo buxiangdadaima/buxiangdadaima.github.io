@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Cark&#39;s blog</title>
+    <link>https://linzhaoming.com/tags/docker/</link>
+    <description>Recent content in Docker on Cark&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Jul 2019 19:34:53 +0800</lastBuildDate>
+    
+	<atom:link href="https://linzhaoming.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker 部署 RocketMQ</title>
+      <link>https://linzhaoming.com/posts/docker-%E9%83%A8%E7%BD%B2-rocketmq/</link>
+      <pubDate>Tue, 23 Jul 2019 19:34:53 +0800</pubDate>
+      
+      <guid>https://linzhaoming.com/posts/docker-%E9%83%A8%E7%BD%B2-rocketmq/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;记录使用 Docker 部署 RocketMQ&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

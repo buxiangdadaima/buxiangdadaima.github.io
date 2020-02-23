@@ -4,7 +4,36 @@
   
   <url>
     <loc>https://linzhaoming.com/</loc>
-    <lastmod>2019-08-01T16:36:08+08:00</lastmod>
+    <lastmod>2019-09-20T21:45:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/tags/linux/</loc>
+    <lastmod>2019-09-20T21:45:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/tags/nginx/</loc>
+    <lastmod>2019-09-20T21:45:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/posts/nginx-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2019-09-20T21:45:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/posts/</loc>
+    <lastmod>2019-09-20T21:45:39+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://linzhaoming.com/tags/</loc>
+    <lastmod>2019-09-20T21:45:39+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -26,18 +55,6 @@
   </url>
   
   <url>
-    <loc>https://linzhaoming.com/posts/</loc>
-    <lastmod>2019-08-01T16:36:08+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://linzhaoming.com/tags/</loc>
-    <lastmod>2019-08-01T16:36:08+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://linzhaoming.com/tags/docker/</loc>
     <lastmod>2019-07-23T19:34:53+08:00</lastmod>
     <priority>0</priority>
@@ -51,12 +68,6 @@
   <url>
     <loc>https://linzhaoming.com/tags/rocketmq/</loc>
     <lastmod>2019-07-23T19:34:53+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://linzhaoming.com/tags/linux/</loc>
-    <lastmod>2019-07-22T20:47:49+08:00</lastmod>
     <priority>0</priority>
   </url>
   

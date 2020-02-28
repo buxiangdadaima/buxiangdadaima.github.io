@@ -123,6 +123,47 @@
 <li>Eureka Client：注册中心客户端，向注册中心注册服务的应用都可以叫做Eureka Client（包括Eureka Server本身）。</li>
 </ul>
 
+<p><img src="http://img.cdn.linzhaoming.com/20200228123545.png" alt="Eureka" /></p>
+
+<p>上图为 Eureka 官方 wiki 的架构图。</p>
+
+<ul>
+<li>Eureka Server(服务端，蓝色块):表示注册中心集群(us-east-xxx: 表示集群所在的区域)</li>
+<li>Eureka Client(客户端，含有灰色小块):</li>
+<li>Application Service(最左边): 表示服务提供者</li>
+<li>Application Client(下面): 表示服务消费者</li>
+</ul>
+
+<p>如上图，有三个区域分别是：</p>
+
+<ul>
+<li>us-east-1c</li>
+<li>us-east-1d</li>
+<li>us-east-1e<br /></li>
+</ul>
+
+<h2 id="同区域的服务注册与调用过程">同区域的服务注册与调用过程：</h2>
+
+<p>以 us-east-1c 区域为例子</p>
+
+<ul>
+<li>Application Service 启动后向 Eureka Server 注册中心注册服务，包括 IP 、Port、服务名等信息</li>
+<li>Application Client 启动后从 Eureka Server 拉取注册列表</li>
+<li>Application Client 发起远程调用的时候优先调用本区域内的 Application Service。如果本区内没有可用的 Application Service，才会发起对其他区内的 Service 调用。<br /></li>
+</ul>
+
+<h2 id="不同区域的服务注册与调用过程">不同区域的服务注册与调用过程：</h2>
+
+<p>三个区域结合在一起代表了不同区域内的服务注册与调用过程。</p>
+
+<ul>
+<li>us-east-1c 内的 Application Service 启动后，向本区内的 Eureka Server 注册服务信息。并跟本区内的 Eureka Server 维持心跳续约。</li>
+<li>us-east-1c 内的 Eureka Server 会将服务信息同步至相邻的 us-east-1d 的 Eureka Server 以及 us-east-1e 的 Eureka Server。</li>
+<li>其它区域的 Application Service 启动后同上述过程。</li>
+<li>us-east-1d 内的 Application Client 启动后，从本区内的 Eureka Server 拉取注册列表。</li>
+<li>us-east-1d 内的 Application Client 发起远程调用时，会先检索本区有没有可用的 Application Service，如果没有就会通过某种算法调用 us-east-1c 或 us-east-1e 中的Application Service服务。<br /></li>
+</ul>
+
 <h1 id="eureka-中的组件调用关系">Eureka 中的组件调用关系</h1>
 
 <h2 id="注册中心">注册中心</h2>

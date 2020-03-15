@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-cn" >
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  
+  <meta name="author"
+        content="Cark"/>
+
+  
+  <meta name="description" content=" 记录学习 Docker 的相关内容
+"/>
+  
+
+  
+  
+  <meta name="keywords" content="Hugo, theme, zozo"/>
+  
+
+  
+  <link rel="canonical" href="https://linzhaoming.com/posts/docker-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+
+  
+
+  <title>Docker 学习笔记 &middot; Cark&#39;s Blog</title>
+
+  <link rel="shortcut icon" href="https://linzhaoming.com/images/favicon.ico"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/animate.min.css"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/remixicon.css"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/zozo.css"/>
+  <link rel="stylesheet" href="https://linzhaoming.com/css/highlight.css"/>
+
+  
+  
+</head>
+
+<body>
+<div class="main animated">
+  <div class="nav_container animated fadeInDown">
+  <div class="site_nav" id="site_nav">
+    <ul>
+      
+      <li>
+        <a href="/">首页</a>
+      </li>
+      
+      <li>
+        <a href="/posts/">归档</a>
+      </li>
+      
+      <li>
+        <a href="/tags/">标签</a>
+      </li>
+      
+      <li>
+        <a href="/about/">关于</a>
+      </li>
+      
+    </ul>
+  </div>
+  <div class="menu_icon">
+    <a id="menu_icon"><i class="remixicon-links-line"></i></a>
+  </div>
+</div>
+
+  <div class="header animated fadeInDown">
+  <div class="site_title_container">
+    <div class="site_title">
+      <h1>
+        <a href="https://linzhaoming.com">
+          <span>Cark&#39;s Blog</span>
+          <img src="https://linzhaoming.com/images/logo.svg"/>
+        </a>
+      </h1>
+    </div>
+    <div class="description">
+      <p class="sub_title"></p>
+      <div class="my_socials">
+        
+        
+        
+        
+        <a href="%20" title="github" target="_blank"><i class="remixicon-github-fill"></i></a>
+        
+        
+        
+        
+        
+        
+        
+        
+        <a href="https://linzhaoming.com/index.xml" type="application/rss+xml" title="rss" target="_blank"><i class="remixicon-rss-fill"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="content">
+    <div class="post_page">
+      <div class="post animated fadeInDown">
+        <div class="post_title post_detail_title">
+          <h2><a href='/posts/docker-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>Docker 学习笔记</a></h2>
+          <span class="date">2019.10.15</span>
+        </div>
+        <div class="post_content markdown"><blockquote>
+<p>记录学习 Docker 的相关内容</p>
+</blockquote>
+
+<h1 id="docker-核心概念">Docker 核心概念</h1>
+
+<h2 id="镜像">镜像</h2>
+
+<p>Docker 镜像（Image）类似于虚拟机镜像，可以讲它理解为一个面向 Docker 引擎的只读模版，包含了文件系统。</p>
+
+<p>镜像是创建 Docker 容器的基础，通过版本管理和增量的文件系统，Docker 提供了一套十分简单的机制来创建和更新现有的镜像，用户甚至可以从网上下载一个已经做好的应用镜像，并通过简单的命令就可以直接使用。</p>
+
+<h3 id="获取镜像">获取镜像</h3>
+
+<pre><code class="language-sh">docker pull &lt;IMAGE_NAME&gt;
+</code></pre>
+
+<h3 id="查看镜像信息">查看镜像信息</h3>
+
+<pre><code class="language-sh"># 列出所有镜像
+docker images
+
+# 查看镜像详情
+docker inspect &lt;IMAGE_ID&gt;
+</code></pre>
+
+<h3 id="搜索镜像">搜索镜像</h3>
+
+<pre><code class="language-sh">docker search &lt;KEYWORD&gt; 
+</code></pre>
+
+<h3 id="删除镜像">删除镜像</h3>
+
+<pre><code class="language-sh">docker rmi &lt;IMAGE&gt;
+</code></pre>
+
+<p><span style="color: orange">注：</span> IMAGE 可以为标签或 ID</p>
+
+<h3 id="创建镜像">创建镜像</h3>
+
+<pre><code class="language-sh">docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+</code></pre>
+
+<p>OPTION:</p>
+
+<ul>
+<li>-a, --author=&quot;&quot; 作者信息</li>
+<li>-m, --message=&quot;&quot; 提交消息</li>
+<li>-p, -- pause=true 提交时暂停容器运行</li>
+</ul>
+
+<h3 id="存出和载入镜像">存出和载入镜像</h3>
+
+<h4 id="存出镜像">存出镜像</h4>
+
+<pre><code class="language-sh">docker save -o &lt;EXPORT&gt; &lt;IMAGE&gt;
+</code></pre>
+
+<h4 id="载入镜像">载入镜像</h4>
+
+<pre><code class="language-sh">docker load &lt; &lt;IMPORT&gt;
+</code></pre>
+
+<h3 id="上传镜像">上传镜像</h3>
+
+<pre><code class="language-sh">docker push NAME[:TAG]
+</code></pre>
+
+<h2 id="容器">容器</h2>
+
+<p>Docker 容器（Container）类似于一个轻量级的沙箱，Docker 利用容器来运行和隔离应用。</p>
+
+<p>容器是从镜像创建的应用运行实例，可以将其启动、开始、停止、删除，而这些容器都是相互隔离，互不可见的。</p>
+
+<p>镜像本身是只读的。容器从镜像启动的时候，Docker 会在镜像的最上层创建一个可写层，镜像本身始终保持不变。</p>
+
+<h3 id="新建容器">新建容器</h3>
+
+<pre><code class="language-sh">docker create
+</code></pre>
+
+<p>使用 docker create 命令新建的容器处于停止状态，可以使用 docker start 命令来启动它。</p>
+
+<h4 id="新建并启动容器">新建并启动容器</h4>
+
+<pre><code class="language-sh">docker run
+</code></pre>
+
+<p>利用 docker run 来创建并启动容器时，Docker 在后台运行的标准操作包括：</p>
+
+<ul>
+<li>检查本地是否存在指定的镜像，不存在就从公有仓库下载。</li>
+<li>利用镜像创建并启动一个容器</li>
+<li>分配一个文件系统，并在只读的镜像层外面挂载一层可读写层</li>
+<li>从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去</li>
+<li>从地址池配置一个 IP 地址给容器</li>
+<li>执行用户指定的应用程序</li>
+<li>执行完毕后容器被终止</li>
+</ul>
+
+<h4 id="守护态运行">守护态运行</h4>
+
+<pre><code class="language-sh">docker run -d 
+</code></pre>
+
+<h3 id="终止容器">终止容器</h3>
+
+<pre><code class="language-sh">docker stop 
+</code></pre>
+
+<p>docker stop 会首先向容器发送 SIGTERM 信号，等待一段时间后（默认为 10s），再发送 SIGKILL 信号终止容器</p>
+
+<blockquote>
+<p>docker kill 命令会直接发送   SIGKILL 信号来强行终止容器</p>
+</blockquote>
+
+<p>可以使用 docker ps -a -q 命令看到处于终止状态的容器的 ID 信息</p>
+
+<p>处于终止态的容器，可以通过 docker start 命令来重新启动</p>
+
+<p>docker restart 命令会将一个运行态的容器终止，然后再重新启动它。</p>
+
+<h3 id="进入容器">进入容器</h3>
+
+<pre><code class="language-sh">docker exec -ti &lt;CONTAINER_ID&gt; /bin/bash
+</code></pre>
+
+<h3 id="删除容器">删除容器</h3>
+
+<pre><code class="language-sh">docker rm [OPTIONS] CONTAINER [CONTAINER...]
+</code></pre>
+
+<p>OPTIONS:</p>
+
+<ul>
+<li>-f，--force=false 强行终止并删除一个运行中的容器</li>
+<li>-l，--link=false 删除容器的连接，但保留容器</li>
+<li>-v，--volumes=false 删除容器挂载的数据卷</li>
+</ul>
+
+<h3 id="导入和导出容器">导入和导出容器</h3>
+
+<h4 id="导出容器">导出容器</h4>
+
+<pre><code class="language-sh">docker export CONTAINER &gt; 
+</code></pre>
+
+<h4 id="导入容器">导入容器</h4>
+
+<pre><code class="language-sh">cat &lt;FILE&gt; | docker import - 
+</code></pre>
+
+<h2 id="仓库">仓库</h2>
+
+<p>Docker 仓库（Respository）类似于代码仓库，是 Docker 集中存放镜像文件的场所。</p>
+
+<p><span style="color: orange">注册服务器（Registry）与 Docker 仓库有区别，注册服务器是存放仓库的地方，其上</span></p></div>
+        <div class="post_footer">
+          
+          <div class="meta">
+            <div class="info">
+              <span class="field tags">
+                <i class="remixicon-stack-line"></i>
+                
+                <a href="https://linzhaoming.com/tags/docker/">Docker</a>
+                
+              </span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
+</div>
+<footer class="footer">
+  <div class="powered_by">
+    <a href="https://zeuk.me">Designed by Zeuk,</a>
+    <a href="http://www.gohugo.io/">Proudly published with Hugo</a>
+  </div>
+
+  
+</footer>
+
+
+
+<script src="https://linzhaoming.com/js/jquery-3.3.1.min.js"></script>
+<script src="https://linzhaoming.com/js/zozo.js"></script>
+<script src="https://linzhaoming.com/js/highlight.pack.js"></script>
+<link  href="https://linzhaoming.com/css/fancybox.min.css" rel="stylesheet">
+<script src="https://linzhaoming.com/js/fancybox.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad()</script>
+
+
+  <script type="text/javascript" async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+
+MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<style>
+code.has-jax {
+    font: inherit;
+    font-size: 100%;
+    background: inherit;
+    border: inherit;
+    color: #515151;
+}
+</style>
+
+
+
+
+
+
+</body>
+</html>
